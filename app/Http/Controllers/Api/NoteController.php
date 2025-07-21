@@ -46,4 +46,16 @@ class NoteController extends Controller
         $note->delete();
         return response()->json(null, 204);
     }
+
+    public function show (){
+        $array = Note::all();
+        $newArr = [];
+        $flag = 0;
+        for($i = count($array)-1; $i >= 0; $i--){
+            if($flag == 5) break;
+            $newArr[$flag] = $array[$i];
+            $flag++;
+        }
+        return $newArr;
+    }
 }
